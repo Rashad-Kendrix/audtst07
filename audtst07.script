@@ -1,0 +1,36 @@
+// Copyright (c) 2014 Mimetics Inc.
+// All Rights Reserved
+//
+// THIS SOFTWARE IS PROVIDED BY MIMETICS "AS IS" WITHOUT ANY EXPRESSED OR 
+// IMPLIED WARRANTIES.  IN NO CASE SHALL MIMETICS OR ANY CONTRIBUTORS BE
+// LIABLE IN ANY DAMAGES CAUSED BY THE USE OF THIS SOFTWARE.  
+//
+// FileName: tonka06.script
+// Version : 06.0
+//
+// Author  : myke predko
+//
+// Description: Test .wav File Player Built into Jade Robot
+//
+// Release History:
+//  audtst06 - Continue playing at full volume until button pressed
+//           - Use "_SndTest" that is in the Main File system
+//  audtst07 - Copied from audtst06 but uses a simple panel
+meta("icon",                "audtstic.b");
+meta("description",         "Speaker Test:Simple Programming Example");
+
+
+    syscall(motorleftset, "0");  syscall(motorrightset, "0");
+
+    syscall(loadpanelfile, "_exec2.p");
+    syscall(setpanelicon, "tools:audtstic.b");
+    syscall(loadsubpanelfile, "audtst07.p");
+    syscall(setpaneltext, "pgmname:Speaker Test");
+    syscall(runpanelfile, "");
+
+    syscall(setvolume, "3");
+    for (; "RUN:" == syscall(tostring, "4:" + syscall(getactivepanelstatus, ""));) {
+        syscall(playwavefile, "_SndTest.w");
+        for (; -1 == stoi(syscall(wavefilestatus, "")); ) {
+        }
+    }
