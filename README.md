@@ -6,7 +6,7 @@ Test .wav File Player Built into Jade Robot.
 ### Project Information
 ```
 Type              : C
-Version           : 02.0
+Version           : 01.0
 Author            : myke predko
 Firmware          : 40
 ```
